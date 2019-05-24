@@ -16,14 +16,14 @@ opinion_modifiers = {
 		trade = no
 		value = -50
 		months = 6
-		decay = 1
+		decay = 5
 	}
 	
 	gave_sanctions = {
 		trade = no
 		value = -25
 		months = 6
-		decay = 1
+		decay = 2.5
 	}
 	
 	gave_minor_sanctions = {

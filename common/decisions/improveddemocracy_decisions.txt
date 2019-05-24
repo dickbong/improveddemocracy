@@ -16,7 +16,7 @@ improveddemocracy_decisions = {
 			FROM = {
 				NOT = {
 					has_government = democratic
-					is_in_faction = yes
+					is_in_faction_with = ROOT
 				}
 				OR = {
 					has_offensive_war = yes
@@ -46,15 +46,12 @@ improveddemocracy_decisions = {
 			}
 			FROM = {
 				save_event_target_as = embargo_receiver
-				country_event = {
-					id = improveddemocracy.1
-					days = 1
-				}
+				country_event = improveddemocracy.1
 			}
 			ROOT = {
 				save_event_target_as = embargo_giver
 			}
-			add_country_flag = is_giving_embargo
+			set_country_flag = is_giving_embargo
 		}
 		
 		remove_effect = {
@@ -64,13 +61,13 @@ improveddemocracy_decisions = {
 			}
 			FROM = {
 				remove_opinion_modifier = {
-					target = FROM
+					target = ROOT
 					modifier = gave_embargo
 				}
-			}
-			country_event = {
-				id = improveddemocracy.6
-				days = 1
+				country_event = {
+					id = improveddemocracy.6
+					days = 1
+				}
 			}
 			clr_country_flag = is_giving_embargo
 		}
@@ -103,6 +100,39 @@ improveddemocracy_decisions = {
 
 trade_war = {
 
+	refuse_embargo = {
+	
+		icon = decision_generic_decision
+	
+		cost = 0
+		
+		days_re_enable = 90
+		
+		target_trigger = {
+			FROM = {
+				has_opinion_modifier = embargo
+			}
+		}
+		
+		visible = {
+			FROM = {
+				has_opinion_modifier = embargo
+			}
+		}
+		
+		available = {
+
+		}
+
+		complete_effect = {
+			FROM = {
+				country_event = improveddemocracy.2
+			}
+			custom_effect_tooltip = embargo_refuse_tt
+		}
+		
+	}
+
 	counter_embargo = {
 	
 		icon = decision_generic_decision
@@ -111,16 +141,16 @@ trade_war = {
 		
 		target_trigger = {
 			FROM = {
-				has_event_target = embargo_giver
-				
+				has_opinion_modifier = embargo
 			}
 		}
 		
 		visible = {
-			has_event_target = embargo_receiver
+			FROM = {
+				has_opinion_modifier = embargo
+			}
 			NOT = {
 				has_country_flag = is_giving_embargo
-				has_event_target = embargo_giver
 			}
 		}
 		
@@ -129,6 +159,10 @@ trade_war = {
 			NOT = {
 				has_country_flag = is_giving_counter_embargo
 			}
+			has_country_flag = trade_war
+			has_country_flag = commence_trade_war
+			has_country_flag = counter_trade_war
+			has_country_flag = persist_trade_war
 		}
 		
 		days_remove = 180
@@ -143,6 +177,7 @@ trade_war = {
 				target = FROM
 				modifier = gave_embargo
 			}
+			set_country_flag = is_giving_counter_embargo
 		}
 		
 		remove_effect = {
@@ -150,6 +185,7 @@ trade_war = {
 				target = FROM
 				modifier = embargo
 			}
+			clr_country_flag = is_giving_counter_embargo
 		}
 		
 		ai_will_do = {
@@ -177,13 +213,11 @@ trade_war = {
 	}
 	
 	#Decision for: De-Escalate Trade War
-	deescalate_tradewar = {
-		icon = decision_generic_form_nation
-	}
+	#deescalate_tradewar = {
+	#	icon = decision_generic_form_nation
+	#}
 	#Decision for: Target Infrastructure
-	target_infrastructure = {
-		icon = 
-	}
-}
-	
+	#target_infrastructure = {
+	#	icon = 
+	#}
 }

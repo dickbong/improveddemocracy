@@ -1,13 +1,13 @@
-improved_democracy_decisions = {
+improveddemocracy_decisions = {
 
 icon = generic_propaganda
 
 available = {
-	has_government = democratic
+	
 }
 
 visible = {
-
+	has_government = democratic
 }
 
 }
@@ -17,15 +17,17 @@ trade_war = {
 icon = generic_propaganda
 
 available = {
-	OR = {
-		has_country_flag = commence_trade_war
-		has_country_flag = counter_trade_war
-		has_country_flag = persist_trade_war
-	}
+	
 }
 
 visible = {
-	
+	#OR = {
+	#	has_event_target = embargo_receiver
+	#	has_opinion_modifier = embargo
+	#	has_country_flag = commence_trade_war
+	#	has_country_flag = counter_trade_war
+	#	has_country_flag = persist_trade_war
+	#}
 }
 
 }

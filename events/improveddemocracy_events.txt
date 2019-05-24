@@ -1,6 +1,6 @@
-add_namespace = improveddemocracy
+﻿add_namespace = improveddemocracy
 
-##Event: [ROOT.GetName] Institutes Embargo
+##Event: [FROM.GetName] Institutes Embargo
 country_event = {
 
  id = improveddemocracy.1
@@ -13,46 +13,36 @@ country_event = {
  
  is_triggered_only = yes
  
+ hidden = no
+ 
 	option = {
 		name = improveddemocracy.1.a
-		ai_chance = { factor = 1}
-		custom_effect_tooltip = embargo_accept_tt
+		ai_chance = { factor = 1 }
+		#custom_effect_tooltip = embargo_accept_tt
 	}
 	
-	option = {
-		name = improveddemocracy.1.b
-		ai_chance = { factor = 1 }
-		hidden_effect = {
-			ROOT = {
-				country_event= {
-					days = 1 
-					id = improveddemocracy.2
-				}
-			}
-		}
-		custom_effect_tooltip = embargo_refuse_tt
-	}
 }
 
-##Event: [ROOT.GetName] Requests We Repeal the Embargo
+##Event: [FROM.GetName] Requests We Repeal the Embargo
 country_event = {
  id = improveddemocracy.2
  title = improveddemocracy.2.title
  desc = improveddemocracy.2.desc
  picture = GFX_report_event_molotov_signing_pact
+ 
  is_triggered_only = yes
+ 
+ hidden = no
  
 	option = {
 		name = improveddemocracy.2.a
 		ai_chance = { factor = 2 }
-		hidden_effect = {
-			random_list = { 
-				50 = { 
-					ROOT = { country_event = { days = 1 id = improveddemocracy.4 } }
-				}
-				50 = { 
-					ROOT = { country_event = { days = 1 id = improveddemocracy.5 } }
-				}
+		random_list = { 
+			50 = { 
+				event_target:embargo_receiver = { country_event = improveddemocracy.4 }
+			}
+			50 = { 
+				event_target:embargo_receiver = { country_event = improveddemocracy.5 }
 			}
 		}
 		custom_effect_tooltip = embargo_keep_tt
@@ -65,6 +55,7 @@ country_event = {
 			target = ROOT
 			decision = embargo_hostile_country
 		}
+		event_target:embargo_receiver = { country_event = improveddemocracy.3 }
 	}
 }
 
@@ -75,6 +66,7 @@ country_event = {
  desc = improveddemocracy.3.desc
  picture = GFX_report_event_molotov_ribentrop_handshake
  is_triggered_only = yes
+ hidden = no
 	option = {
 		name = improveddemocracy.3.a
 		ai_chance = { factor = 1 }
@@ -88,6 +80,7 @@ country_event = {
  desc = improveddemocracy.4.desc
  picture = GFX_report_event_molotov_ribentrop_handshake
  is_triggered_only = yes
+ hidden = no
 	option = {
 		name = improveddemocracy.4.a
 		ai_chance = { factor = 1 }
@@ -101,22 +94,20 @@ country_event = {
  desc = improveddemocracy.5.desc
  picture = GFX_report_event_king_speech
  is_triggered_only = yes
+ hidden = no
+ 
 	option = {
 		name = improveddemocracy.5.a
-		ai_chance = { factor = 1 }
+		ai_chance = { factor = 0 }
 		unlock_decision_category_tooltip = trade_war
-		add_country_flag = commence_trade_war
+		set_country_flag = commence_trade_war
 		add_opinion_modifier = {
-			target = embargo_giver
-			modifier = in_trade_war
-		}
-		add_opinion_modifier = {
-			target = embargo_giver
+			target = event_target:embargo_giver
 			modifier = in_trade_war
 		}
 		reverse_add_opinion_modifier = {
-			target = GER
-			modifier = faction_traitor
+			target = event_target:embargo_giver
+			modifier = in_trade_war
 		}
 	}
 
@@ -131,34 +122,18 @@ country_event = {
 			modifier = {
 				factor = 2
 				has_political_power > 50
-				ai_liberate_desire = {
-					target = ROOT
-					count > 1
-				}
 			}
 			modifier = {
 				factor = 2
 				has_political_power > 50
-				ai_liberate_desire = {
-					target = ROOT
-					count > 2
-				}
 			}
 			modifier = {
 				factor = 5
 				has_political_power > 100
-				ai_liberate_desire = {
-					target = ROOT
-					count > 5
-				}
 			}
 			modifier = {
 				factor = 10
 				has_political_power > 150
-				ai_liberate_desire = {
-					target = ROOT
-					count > 10
-				}
 			}
 		}
 	}
@@ -171,20 +146,18 @@ country_event = {
  desc = improveddemocracy.6.desc
  picture = GFX_report_event_molotov_ribentrop_handshake
  is_triggered_only = yes
+ hidden = no
 	option = {
 		name = improveddemocracy.6.a
 		ai_chance = { factor = 1}
-		add_country_flag = persist_trade_war
+		set_country_flag = persist_trade_war
 	}
 	option = {
 		name = improveddemocracy.6.b
 		ai_chance = { factor = 1}
-		embargo_giver = {
-country_event= {
-days = 1 
-id = improveddemocracy.7
-}
-}
+		event_target:embargo_giver = {
+			country_event = improveddemocracy.7
+		}
 	}
 	option = {
 		name = improveddemocracy.6.c
@@ -199,10 +172,11 @@ country_event = {
  desc = improveddemocracy.7.desc
  picture = GFX_report_event_molotov_ribentrop_handshake
  is_triggered_only = yes
+ hidden = no
 	option = {
 		name = improveddemocracy.7.a
 		ai_chance = { factor = 1}
-		embargo_giver = {
+		event_target:embargo_giver = {
 			if = { 
 				limit = { 
 					has_country_flag = counter_trade_war
@@ -210,11 +184,11 @@ country_event = {
 				clr_country_flag = counter_trade_war 
 			}
 			remove_opinion_modifier = {
-				target = embargo_receiver
+				target = FROM
 				modifier = in_trade_war
 			}
 		}
-		embargo_receiver = {
+		event_target:embargo_receiver = {
 			if = { 
 				limit = { 
 					has_country_flag = commence_trade_war 
@@ -225,10 +199,10 @@ country_event = {
 				limit = { 
 					has_country_flag = persist_trade_war 
 				} 
-				clr_country_flag = persist _trade_war 
+				clr_country_flag = persist_trade_war 
 			}
 			remove_opinion_modifier = {
-				target = embargo_giver
+				target = ROOT
 				modifier = in_trade_war
 			}
 		}
