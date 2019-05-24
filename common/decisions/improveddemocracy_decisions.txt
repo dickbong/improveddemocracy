@@ -30,6 +30,9 @@ improveddemocracy_decisions = {
 					has_opinion_modifier = embargo
 				}
 			}
+			NOT = {
+				has_country_flag = is_giving_embargo
+			}
 		}
 		
 		days_remove = 180
@@ -44,6 +47,17 @@ improveddemocracy_decisions = {
 				target = FROM
 				modifier = gave_embargo
 			}
+			FROM = {
+				save_event_target_as = embargo_receiver
+				country_event = {
+					id = improveddemocracy.1
+					days = 1
+				}
+			}
+			ROOT = {
+				save_event_target_as = embargo_giver
+			}
+			add_country_flag = is_giving_embargo
 		}
 		
 		remove_effect = {
@@ -51,6 +65,17 @@ improveddemocracy_decisions = {
 				target = FROM
 				modifier = embargo
 			}
+			FROM = {
+				remove_opinion_modifier = {
+					target = FROM
+					modifier = gave_embargo
+				}
+			}
+			country_event = {
+				id = improveddemocracy.6
+				days = 1
+			}
+			clr_country_flag = is_giving_embargo
 		}
 		
 		ai_will_do = {

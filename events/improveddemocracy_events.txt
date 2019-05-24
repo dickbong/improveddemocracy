@@ -105,7 +105,21 @@ country_event = {
 		name = improveddemocracy.5.a
 		ai_chance = { factor = 1 }
 		unlock_decision_category_tooltip = trade_war
+		add_country_flag = commence_trade_war
+		add_opinion_modifier = {
+			target = embargo_giver
+			modifier = in_trade_war
+		}
+		add_opinion_modifier = {
+			target = embargo_giver
+			modifier = in_trade_war
+		}
+		reverse_add_opinion_modifier = {
+			target = GER
+			modifier = faction_traitor
+		}
 	}
+
 	option = {
 		name = improveddemocracy.5.b
 		ai_chance = { 
@@ -147,6 +161,81 @@ country_event = {
 				}
 			}
 		}
+	}
+}
+
+##Event: [embargo_giver.GetName]'s Embargo Expires
+country_event = {
+ id = improveddemocracy.6
+ title = improveddemocracy.6.title
+ desc = improveddemocracy.6.desc
+ picture = GFX_report_event_molotov_ribentrop_handshake
+ is_triggered_only = yes
+	option = {
+		name = improveddemocracy.6.a
+		ai_chance = { factor = 1}
+		add_country_flag = persist_trade_war
+	}
+	option = {
+		name = improveddemocracy.6.b
+		ai_chance = { factor = 1}
+		embargo_giver = {
+country_event= {
+days = 1 
+id = improveddemocracy.7
+}
+}
+	}
+	option = {
+		name = improveddemocracy.6.c
+		ai_chance = { factor = 1}
+	}
+}
+
+##Event: [embargo_receiver.GetName] Seeks to De-Escalate Trade War
+country_event = {
+ id = improveddemocracy.7
+ title = improveddemocracy.7.title
+ desc = improveddemocracy.7.desc
+ picture = GFX_report_event_molotov_ribentrop_handshake
+ is_triggered_only = yes
+	option = {
+		name = improveddemocracy.7.a
+		ai_chance = { factor = 1}
+		embargo_giver = {
+			if = { 
+				limit = { 
+					has_country_flag = counter_trade_war
+				} 
+				clr_country_flag = counter_trade_war 
+			}
+			remove_opinion_modifier = {
+				target = embargo_receiver
+				modifier = in_trade_war
+			}
+		}
+		embargo_receiver = {
+			if = { 
+				limit = { 
+					has_country_flag = commence_trade_war 
+				}
+				clr_country_flag = commence_trade_war 
+			}
+			if = { 
+				limit = { 
+					has_country_flag = persist_trade_war 
+				} 
+				clr_country_flag = persist _trade_war 
+			}
+			remove_opinion_modifier = {
+				target = embargo_giver
+				modifier = in_trade_war
+			}
+		}
+	}
+	option = {
+		name = improveddemocracy.7.b
+		ai_chance = { factor = 1}
 	}
 }
 

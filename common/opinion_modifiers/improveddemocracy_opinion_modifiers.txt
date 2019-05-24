@@ -33,4 +33,9 @@ opinion_modifiers = {
 		decay = 1
 	}
 	
+	in_trade_war = {
+		trade = no
+		value = -50
+	}
+	
 }
