@@ -1,0 +1,36 @@
+#########################################################################
+# OPINION MODIFIERS
+##########################################################################
+# value
+# min_trust
+# max_trust
+# decay
+# months/years/days = timer
+# trade = yes/no
+
+opinion_modifiers = {
+
+	##### TRADE OPINION MODIFIERS
+	
+	gave_embargo = {
+		trade = no
+		value = -50
+		months = 6
+		decay = 1
+	}
+	
+	gave_sanctions = {
+		trade = no
+		value = -25
+		months = 6
+		decay = 1
+	}
+	
+	gave_minor_sanctions = {
+		trade = no
+		value = -15
+		months = 6
+		decay = 1
+	}
+	
+}

@@ -1,0 +1,13 @@
+improved_democracy_decisions = {
+
+icon = generic_propaganda
+
+available = {
+	has_government = democratic
+}
+
+visible = {
+
+}
+
+}

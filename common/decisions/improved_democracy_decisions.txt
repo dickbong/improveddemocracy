@@ -1,0 +1,80 @@
+improved_democracy_decisions = {
+
+	embargo_hostile_country = {
+	
+		cost = 10
+		
+		target_trigger = {
+			FROM = {
+					NOT = { has_government = democratic }
+			}
+		}
+		
+		visible = {
+			FROM = {
+				NOT = {
+					has_government = democratic
+					is_in_faction = yes
+				}
+				OR = {
+					has_offensive_war = yes
+					has_added_tension_amount > 30
+				}
+			}
+		}
+		
+		available = {
+			has_political_power > 10
+			NOT = {
+				FROM = {
+					has_opinion_modifier = embargo
+				}
+			}
+		}
+		
+		days_remove = 180
+
+		
+		complete_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = embargo
+			}
+			reverse_add_opinion_modifier = {
+				target = FROM
+				modifier = gave_embargo
+			}
+		}
+		
+		remove_effect = {
+			remove_opinion_modifier = {
+				target = FROM
+				modifier = embargo
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				ROOT = {
+					has_opinion = {
+						target = FROM
+						value > 50
+					}			
+				}
+			}
+			modifier = {
+				factor = 0.1
+				ROOT = {
+					has_opinion = {
+						target = FROM
+						value > 10
+					}			
+				}
+			}
+		}
+		
+	}
+	
+}
