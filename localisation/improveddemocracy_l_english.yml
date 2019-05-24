@@ -1,0 +1,30 @@
+﻿#i love democracy. i love the republic.
+l_english: 
+#decisions
+embargo_hostile_country:0 "Embargo §R[FROM.GetName]"
+#opinion modifiers
+gave_embargo:0 "Gave Embargo"
+gave_sanctions:0 "Gave Sanctions"
+gave_minor_sanctions:0 "Gave Minor Sanctions"
+#events
+improveddemocracy.1.title:0 "[ROOT.GetName] Institutes Embargo"
+improveddemocracy.1.desc:0 "[ROOT.GetName] has recently informed us that they will look elsewhere for trade according to our supposed "rapid expansionism." While the embargo is insulting, shall we attempt to repair trade relations with [ROOT.GetName]?"
+improveddemocracy.1.a:0 "Who needs the them anyway?"
+embargo_accept_tt:0 "Maintains the §Rembargo§ against us.
+improveddemocracy.1.b:0 "We shall attempt to persuade them."
+embargo_refuse_tt:0 "Engaging in negotiations could either §Rignite a trade war§ or §Grepeal the embargo.§
+improveddemocracy.2.title:0 "[ROOT.GetName] Requests We Repeal the Embargo"
+improveddemocracy.2.desc:0 "We have recently received word that [ROOT.GetName] has urged us against instituting the embargo. These demands seem misplaced especially considering their recent expansionism. While we should remain a legitimate democracy, is the embargo really worth risking military conflict with [ROOT.GetName]?"
+improveddemocracy.2.a:0 "Keep the embargo!"
+embargo_keep_tt:0 "Keeping the embargo could possibly §Rignite a trade war§.
+improveddemocracy.2.b:0 "We must cave to their demands..."
+improveddemocracy.3.title:0 "[ROOT.GetName] Removes Embargo"
+improveddemocracy.3.desc:0 "[ROOT.GetName] decided it necessary to repeal the embargo. Cheers to victory and expanded trade relations! We can relish in the fact that their time and resources were wasted in an attempt to contain our glorious nation!"
+improveddemocracy.3.a:0 "Excellent!"
+improveddemocracy.4.title:0 "The Embargo Persists"
+improveddemocracy.4.desc:0 "Despite our greatest efforts, we were not able to coax [ROOT.GetName] out of implementing the embargo. Perhaps it is time to commit our time and energies towards bigger and better things."
+improveddemocracy.4.a:0 "Disappointing..."
+improveddemocracy.5.title:0 "Impending Trade War?"
+improveddemocracy.5.desc:0 "Considering [ROOT.GetName]'s foolish decision to maintain their embargo against us, our advisors have suggested entering a trade war. However, should we commit our political efforts to such petty squabbles?"
+improveddemocracy.5.a:0 "Commence the trade war!"
+improveddemocracy.5.b:0 "Our economies are too interdependent."

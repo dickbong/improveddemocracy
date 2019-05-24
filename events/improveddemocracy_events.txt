@@ -1,0 +1,152 @@
+add_namespace = improveddemocracy
+
+##Event: [ROOT.GetName] Institutes Embargo
+country_event = {
+
+ id = improveddemocracy.1
+ 
+ title = improveddemocracy.1.title
+ 
+ desc = improveddemocracy.1.desc
+ 
+ picture = GFX_report_event_molotov_signing_pact
+ 
+ is_triggered_only = yes
+ 
+	option = {
+		name = improveddemocracy.1.a
+		ai_chance = { factor = 1}
+		custom_effect_tooltip = embargo_accept_tt
+	}
+	
+	option = {
+		name = improveddemocracy.1.b
+		ai_chance = { factor = 1 }
+		hidden_effect = {
+			ROOT = {
+				country_event= {
+					days = 1 
+					id = improveddemocracy.2
+				}
+			}
+		}
+		custom_effect_tooltip = embargo_refuse_tt
+	}
+}
+
+##Event: [ROOT.GetName] Requests We Repeal the Embargo
+country_event = {
+ id = improveddemocracy.2
+ title = improveddemocracy.2.title
+ desc = improveddemocracy.2.desc
+ picture = GFX_report_event_molotov_signing_pact
+ is_triggered_only = yes
+ 
+	option = {
+		name = improveddemocracy.2.a
+		ai_chance = { factor = 2 }
+		hidden_effect = {
+			random_list = { 
+				50 = { 
+					ROOT = { country_event = { days = 1 id = improveddemocracy.4 } }
+				}
+				50 = { 
+					ROOT = { country_event = { days = 1 id = improveddemocracy.5 } }
+				}
+			}
+		}
+		custom_effect_tooltip = embargo_keep_tt
+	}
+	
+	option = {
+		name = improveddemocracy.2.b
+		ai_chance = { factor = 1 }
+		remove_targeted_decision = {
+			target = ROOT
+			decision = embargo_hostile_country
+		}
+	}
+}
+
+##Event: [ROOT.GetName] Removes Embargo
+country_event = {
+ id = improveddemocracy.3
+ title = improveddemocracy.3.title
+ desc = improveddemocracy.3.desc
+ picture = GFX_report_event_molotov_ribentrop_handshake
+ is_triggered_only = yes
+	option = {
+		name = improveddemocracy.3.a
+		ai_chance = { factor = 1 }
+	}
+}
+
+##Event: The Embargo Persists
+country_event = {
+ id = improveddemocracy.4
+ title = improveddemocracy.4.title
+ desc = improveddemocracy.4.desc
+ picture = GFX_report_event_molotov_ribentrop_handshake
+ is_triggered_only = yes
+	option = {
+		name = improveddemocracy.4.a
+		ai_chance = { factor = 1 }
+	}
+}
+
+##Event: Impending Trade War?
+country_event = {
+ id = improveddemocracy.5
+ title = improveddemocracy.5.title
+ desc = improveddemocracy.5.desc
+ picture = GFX_report_event_king_speech
+ is_triggered_only = yes
+	option = {
+		name = improveddemocracy.5.a
+		ai_chance = { factor = 1 }
+		unlock_decision_category_tooltip = trade_war
+	}
+	option = {
+		name = improveddemocracy.5.b
+		ai_chance = { 
+			factor = 1 
+			modifier = {
+				factor = 0.1
+				has_war = yes
+			}
+			modifier = {
+				factor = 2
+				has_political_power > 50
+				ai_liberate_desire = {
+					target = ROOT
+					count > 1
+				}
+			}
+			modifier = {
+				factor = 2
+				has_political_power > 50
+				ai_liberate_desire = {
+					target = ROOT
+					count > 2
+				}
+			}
+			modifier = {
+				factor = 5
+				has_political_power > 100
+				ai_liberate_desire = {
+					target = ROOT
+					count > 5
+				}
+			}
+			modifier = {
+				factor = 10
+				has_political_power > 150
+				ai_liberate_desire = {
+					target = ROOT
+					count > 10
+				}
+			}
+		}
+	}
+}
+
