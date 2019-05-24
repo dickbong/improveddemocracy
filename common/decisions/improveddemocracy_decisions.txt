@@ -4,6 +4,8 @@ improveddemocracy_decisions = {
 	
 		cost = 10
 		
+		icon = decision_generic_decision
+		
 		target_trigger = {
 			FROM = {
 				NOT = { has_government = democratic }
@@ -25,11 +27,6 @@ improveddemocracy_decisions = {
 		
 		available = {
 			has_political_power > 10
-			NOT = {
-				FROM = {
-					has_opinion_modifier = embargo
-				}
-			}
 			NOT = {
 				has_country_flag = is_giving_embargo
 			}
@@ -108,26 +105,29 @@ trade_war = {
 
 	counter_embargo = {
 	
+		icon = decision_generic_decision
+	
 		cost = 10
 		
 		target_trigger = {
 			FROM = {
+				has_event_target = embargo_giver
 				
 			}
 		}
 		
 		visible = {
-			FROM = {
-				
+			has_event_target = embargo_receiver
+			NOT = {
+				has_country_flag = is_giving_embargo
+				has_event_target = embargo_giver
 			}
 		}
 		
 		available = {
 			has_political_power > 10
 			NOT = {
-				FROM = {
-					has_opinion_modifier = embargo
-				}
+				has_country_flag = is_giving_counter_embargo
 			}
 		}
 		
@@ -175,5 +175,15 @@ trade_war = {
 		}
 		
 	}
+	
+	#Decision for: De-Escalate Trade War
+	deescalate_tradewar = {
+		icon = decision_generic_form_nation
+	}
+	#Decision for: Target Infrastructure
+	target_infrastructure = {
+		icon = 
+	}
+}
 	
 }

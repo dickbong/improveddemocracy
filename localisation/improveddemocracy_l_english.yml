@@ -1,7 +1,17 @@
 ﻿#i love democracy. i love the republic.
 l_english: 
 #decisions
+democracy:0 "Democracy"
+democracy_desc:0 "Democracy is the greatest invention of humankind. Without its benevolence, we might as well all descend into anarchy. Modifying our foreign policy with threatening nations might lower world tension and work towards achieving a safer, more stable world."
 embargo_hostile_country:0 "Embargo §R[FROM.GetName]"
+embargo_hostile_country_desc:0 "We should prevent the fascist and communist dictatorships of the world from gaining significant forms of influence by curtailing trade.  An embargo would almost wholly cut off their ability to import our goods."
+trade war:0 "Trade War"
+deescalatetradewar:0 "De-Escalate Trade War"
+deescalatetradewar_desc:0 "The war has taken too much of a toll on both of our countries. Perhaps now it is time to make peace?"
+targetinfrastructure:0 "Target Infrastructure"
+targetinfrastructure_desc:0 "To ensure that our opponents extract as little resources as possible, we are able to send an infiltrating force to sabotage their infrastructure."
+counterembargo:0 "Counter-Embargo"
+counterembargo_desc:0 "Completely stopping trade relations with our rivals ought  to damage their economy in some aspects. To preserve our honor, we must respond to their actions."
 #opinion modifiers
 gave_embargo:0 "Gave Embargo"
 gave_sanctions:0 "Gave Sanctions"
