@@ -1,0 +1,29 @@
+#	Example:
+# 
+#	example_trigger = {
+#		tag = GER
+#		is_ai = no
+#	}
+#
+#
+#	In a script file:
+#
+#	trigger = {
+#		example_trigger = yes
+#	}
+#
+
+#i love democracy, i love the republic.
+
+is_being_embargoed = {
+	FROM = {
+		has_opinion_modifier = embargo
+	}
+	ROOT = {
+		has_opinion_modifier = gave_embargo
+	}
+}
+
+has_embargo = {
+	has_opinion_modifier = embargo
+}

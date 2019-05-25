@@ -34,17 +34,16 @@ country_event = {
  
  hidden = no
  
+	immediate = {
+		FROM = {
+			save_event_target_as = embargo_receiver
+		}
+	}
+ 
 	option = {
 		name = improveddemocracy.2.a
-		ai_chance = { factor = 2 }
-		random_list = { 
-			50 = { 
-				event_target:embargo_receiver = { country_event = improveddemocracy.4 }
-			}
-			50 = { 
-				event_target:embargo_receiver = { country_event = improveddemocracy.5 }
-			}
-		}
+		ai_chance = { factor = 0 }
+		event_target:embargo_receiver = { country_event = improveddemocracy.4 }
 		custom_effect_tooltip = embargo_keep_tt
 	}
 	
@@ -52,7 +51,7 @@ country_event = {
 		name = improveddemocracy.2.b
 		ai_chance = { factor = 1 }
 		remove_targeted_decision = {
-			target = ROOT
+			target = event_target:embargo_receiver
 			decision = embargo_hostile_country
 		}
 		event_target:embargo_receiver = { country_event = improveddemocracy.3 }
@@ -84,6 +83,8 @@ country_event = {
 	option = {
 		name = improveddemocracy.4.a
 		ai_chance = { factor = 1 }
+		unlock_decision_category_tooltip = trade_war
+		set_country_flag = commence_trade_war
 	}
 }
 
@@ -209,6 +210,38 @@ country_event = {
 	}
 	option = {
 		name = improveddemocracy.7.b
+		ai_chance = { factor = 1}
+	}
+}
+
+##Event: [ROOT.GetName] Declares Embargo Against [FROM.GetName]
+news_event = {
+ id = improveddemocracy.8
+ title = improveddemocracy.8.title
+ desc = improveddemocracy.8.desc
+ picture = GFX_news_event_generic_read_write
+ is_triggered_only = yes
+ fire_only_once = no
+ major = yes
+ hidden = no
+	option = {
+		name = improveddemocracy.8.a
+		ai_chance = { factor = 1}
+	}
+}
+
+##Event: [ROOT.GetName]'s Embargo Against [FROM.GetName] Expires
+news_event = {
+ id = improveddemocracy.9
+ title = improveddemocracy.9.title
+ desc = improveddemocracy.9.desc
+ picture = GFX_news_event_generic_read_write
+ is_triggered_only = yes
+ fire_only_once = no
+ major = yes
+ hidden = no
+	option = {
+		name = improveddemocracy.9.a
 		ai_chance = { factor = 1}
 	}
 }

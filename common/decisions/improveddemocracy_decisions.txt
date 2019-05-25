@@ -26,7 +26,6 @@ improveddemocracy_decisions = {
 		}
 		
 		available = {
-			has_political_power > 10
 			NOT = {
 				has_country_flag = is_giving_embargo
 			}
@@ -44,14 +43,15 @@ improveddemocracy_decisions = {
 				target = FROM
 				modifier = gave_embargo
 			}
-			FROM = {
-				save_event_target_as = embargo_receiver
-				country_event = improveddemocracy.1
-			}
-			ROOT = {
-				save_event_target_as = embargo_giver
-			}
-			set_country_flag = is_giving_embargo
+			news_event = improveddemocracy.8
+			#FROM = {
+			#	save_event_target_as = embargo_receiver
+			#	country_event = improveddemocracy.1
+			#}
+			#ROOT = {
+			#	save_event_target_as = embargo_giver
+			#}
+			#set_country_flag = is_giving_embargo
 		}
 		
 		remove_effect = {
@@ -59,15 +59,16 @@ improveddemocracy_decisions = {
 				target = FROM
 				modifier = embargo
 			}
+			news_event = improveddemocracy.9
 			FROM = {
 				remove_opinion_modifier = {
 					target = ROOT
 					modifier = gave_embargo
 				}
-				country_event = {
-					id = improveddemocracy.6
-					days = 1
-				}
+				#country_event = {
+				#	id = improveddemocracy.6
+				#	days = 1
+				#}
 			}
 			clr_country_flag = is_giving_embargo
 		}
@@ -110,18 +111,16 @@ trade_war = {
 		
 		target_trigger = {
 			FROM = {
-				has_opinion_modifier = embargo
+				has_embargo = yes
 			}
 		}
 		
 		visible = {
-			FROM = {
-				has_opinion_modifier = embargo
-			}
+			is_being_embargoed = yes
 		}
 		
 		available = {
-
+			is_being_embargoed = yes
 		}
 
 		complete_effect = {
@@ -141,28 +140,22 @@ trade_war = {
 		
 		target_trigger = {
 			FROM = {
-				has_opinion_modifier = embargo
+				has_embargo = yes
 			}
 		}
 		
 		visible = {
-			FROM = {
-				has_opinion_modifier = embargo
-			}
+			is_being_embargoed = yes
 			NOT = {
 				has_country_flag = is_giving_embargo
 			}
 		}
 		
 		available = {
-			has_political_power > 10
 			NOT = {
 				has_country_flag = is_giving_counter_embargo
 			}
-			has_country_flag = trade_war
 			has_country_flag = commence_trade_war
-			has_country_flag = counter_trade_war
-			has_country_flag = persist_trade_war
 		}
 		
 		days_remove = 180
